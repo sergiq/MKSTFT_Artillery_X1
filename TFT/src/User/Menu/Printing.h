@@ -15,6 +15,7 @@ typedef struct
   bool    printing; // 1 means printing, 0 means idle
   bool    pause; //1 means paused
   bool    m0_pause; //pause triggered through M0/M1 gcode
+  bool    m600_pause; //pause triggered through M600 gcode
 }PRINTING;
 
 void exitPrinting(void);
@@ -23,11 +24,13 @@ void completePrinting(void);
 void abortPrinting(void);
 
 void setM0Pause(bool m0_pause);
-bool setPrintPause(bool is_pause,bool is_m0pause);
+void setM600Pause(bool m600_pause);
+bool setPrintPause(bool is_pause,bool is_m0pause,bool m600_pause);
 
 bool isPrinting(void);	
 bool isPause(void);
 bool isM0_Pause(void);
+bool isM600_Pause(void);
 void setPrintingTime(u32 RTtime);
 
 void setPrintSize(u32 size);

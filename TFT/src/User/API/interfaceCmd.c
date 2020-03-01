@@ -159,12 +159,12 @@ void sendQueueCmd(void)
       {
         case 0:
           if (isPrinting()) {
-            setPrintPause(true,true);
+            setPrintPause(true,true,false);
           }
           break;
         case 1:
           if (isPrinting()) {
-            setPrintPause(true,true);
+            setPrintPause(true,true,false);
           }
           break;
         case 18: //M18/M84 disable steppers
@@ -308,6 +308,11 @@ void sendQueueCmd(void)
             sprintf(buf, "S%d\n", speedGetPercent(1));
             strcat(infoCmd.queue[infoCmd.index_r].gcode,(const char*)buf);
             speedSetSendWaiting(1, false);
+          }
+          break;
+        case 600: //M600
+          if (isPrinting()) {
+            setPrintPause(true,false,true);
           }
           break;
       }

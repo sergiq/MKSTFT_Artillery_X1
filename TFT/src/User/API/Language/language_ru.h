@@ -152,5 +152,6 @@
     #define RU_MOVE_SPEED           "Скорость (X Y Z)"
     #define RU_KNOB_LED             "Rotary Knob LED"
     #define RU_M0_PAUSE             "Paused by M0 command"
+    #define RU_M600_PAUSE           "Paused by M600 command"
     
 #endif

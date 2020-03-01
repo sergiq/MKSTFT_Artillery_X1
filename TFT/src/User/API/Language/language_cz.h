@@ -152,5 +152,6 @@
     #define CZ_MOVE_SPEED           "Move speed(X Y Z)"
     #define CZ_KNOB_LED             "Rotary Knob LED"
     #define CZ_M0_PAUSE             "Paused by M0 command"
+    #define CZ_M600_PAUSE           "Paused by M600 command"
 
 #endif

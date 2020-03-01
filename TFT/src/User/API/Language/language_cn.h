@@ -152,5 +152,6 @@
     #define CN_MOVE_SPEED           "Move speed(X Y Z)"
     #define CN_KNOB_LED             "Rotary Knob LED"
     #define CN_M0_PAUSE             "Paused by M0 command"
+    #define CN_M600_PAUSE           "Paused by M600 command"
 
 #endif

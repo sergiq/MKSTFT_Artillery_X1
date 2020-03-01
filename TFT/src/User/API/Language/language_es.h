@@ -152,5 +152,6 @@
     #define ES_MOVE_SPEED           "Move speed(X Y Z)"
     #define ES_KNOB_LED             "Rotary Knob LED"
     #define ES_M0_PAUSE             "Paused by M0 command"
+    #define ES_M600_PAUSE           "Paused by M600 command"
 
 #endif

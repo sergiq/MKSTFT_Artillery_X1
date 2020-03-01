@@ -87,7 +87,7 @@
 #elif defined(MKS_32_V1_4)
   #define SERIAL_PORT   _USART2
   #define SERIAL_PORT_2 _USART1
-  #define SERIAL_PORT_3 _USART3  
+  #define SERIAL_PORT_3 _USART3
 #endif
 
 //XPT2046 Software SPI Pins (touch screen ic)
@@ -224,7 +224,7 @@
   #define USE_USB_OTG_FS
 #elif defined(MKS_32_V1_4)
   #define U_DISK_SUPPROT
-  #define USE_USB_OTG_FS  
+  #define USE_USB_OTG_FS
 #endif
 
 //extend function(PS_ON, filament_detect)
@@ -235,8 +235,8 @@
   #define PS_ON_PIN      PA12
   #define FIL_RUNOUT_PIN PA15
 #elif defined(MKS_32_V1_4)
-  //#define PS_ON_PIN      PB0
-  //#define FIL_RUNOUT_PIN PB1  
+  #define PS_ON_PIN      PB0
+  #define FIL_RUNOUT_PIN PB1
 #endif
     
 //Debug disable, free pins for other function

@@ -53,7 +53,12 @@ bool isPause(void)
 
 bool isM0_Pause(void)
 {
-return infoPrinting.m0_pause;
+  return infoPrinting.m0_pause;
+}
+
+bool isM600_Pause(void)
+{
+  return infoPrinting.m600_pause;
 }
 
 //
@@ -206,7 +211,11 @@ void setM0Pause(bool m0_pause){
   infoPrinting.m0_pause = m0_pause;
 }
 
-bool setPrintPause(bool is_pause, bool is_m0pause)
+void setM600Pause(bool m600_pause){
+  infoPrinting.m600_pause = m600_pause;
+}
+
+bool setPrintPause(bool is_pause, bool is_m0pause, bool is_m600pause)
 {
   static bool pauseLock = false;
   if(pauseLock)                      return false;
@@ -228,8 +237,8 @@ bool setPrintPause(bool is_pause, bool is_m0pause)
     case TFT_UDISK:
     case TFT_SD:
       infoPrinting.pause = is_pause;
-      if(infoPrinting.pause == true && is_m0pause == false){
-      while (infoCmd.count != 0) {loopProcess();}
+      if(infoPrinting.pause == true && is_m0pause == false && is_m600pause == false){
+        while (infoCmd.count != 0) {loopProcess();}
       }
 
       bool isCoorRelative = coorGetRelative();
@@ -240,12 +249,18 @@ bool setPrintPause(bool is_pause, bool is_m0pause)
       {
         //restore status before pause
         //if pause was triggered through M0/M1 then break
-      if(is_m0pause == true) {
-        setM0Pause(is_m0pause);
-        popupReminder(textSelect(LABEL_PAUSE), textSelect(LABEL_M0_PAUSE));
-        break;
+        if(is_m0pause == true) {
+          setM0Pause(is_m0pause);
+          popupReminder(textSelect(LABEL_PAUSE), textSelect(LABEL_M0_PAUSE));
+          break;
         }
-      
+
+        if(is_m600pause == true) {
+          setM600Pause(is_m600pause);
+          popupReminder(textSelect(LABEL_PAUSE), textSelect(LABEL_M600_PAUSE));
+          break;
+        }
+        
         coordinateGetAll(&tmp);
         if (isCoorRelative == true)     mustStoreCmd("G90\n");
         if (isExtrudeRelative == true)  mustStoreCmd("M82\n");
@@ -263,11 +278,17 @@ bool setPrintPause(bool is_pause, bool is_m0pause)
       }
       else
       {
-      if(isM0_Pause() == true) {
-        setM0Pause(is_m0pause);
-        Serial_Puts(SERIAL_PORT, "M108\n");
-        break;
+        if(isM0_Pause() == true) {
+          setM0Pause(is_m0pause);
+          Serial_Puts(SERIAL_PORT, "M108\n");
+          break;
         }
+        if(isM600_Pause() == true) {
+          setM600Pause(is_m600pause);
+          Serial_Puts(SERIAL_PORT, "M108\n");
+          break;
+        }
+
         if (isCoorRelative == true)     mustStoreCmd("G90\n");
         if (isExtrudeRelative == true)  mustStoreCmd("M82\n");
         
@@ -426,7 +447,7 @@ void menuPrinting(void)
     switch(key_num)
     {
       case KEY_ICON_0:
-        setPrintPause(!isPause(),false);
+        setPrintPause(!isPause(),false,false);
         break;
       
       case KEY_ICON_3:
