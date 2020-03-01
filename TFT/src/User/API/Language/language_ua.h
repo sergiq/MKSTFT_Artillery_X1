@@ -28,6 +28,8 @@
     #define	UA_POINT_2                    "Місце 2"
     #define	UA_POINT_3                    "Місце 3"
     #define	UA_POINT_4                    "Місце 4"
+    #define	UA_POINT_5                    "Місце 5"
+    #define UA_MESH                       "MBL"
     #define	UA_ABL                        "ABL"
     #define	UA_BLTOUCH                    "BLдотик"
     #define	UA_BLTOUCH_TEST               "Тест"

@@ -24,6 +24,8 @@
     #define IT_POINT_2              "Punto 2"
     #define IT_POINT_3              "Punto 3"
     #define IT_POINT_4              "Punto 4"
+    #define IT_POINT_5              "Punto 5"
+    #define IT_MESH                 "MBL"
     #define IT_ABL                  "ABL"
     #define IT_BLTOUCH              "Bltouch"
     #define IT_BLTOUCH_TEST         "Test"

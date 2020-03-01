@@ -24,6 +24,8 @@
     #define CZ_POINT_2              "Bod 2"
     #define CZ_POINT_3              "Bod 3"
     #define CZ_POINT_4              "Bod 4"
+    #define CZ_POINT_5              "Bod 5"
+    #define CZ_MESH                 "MBL"
     #define CZ_ABL                  "Automat"
     #define CZ_BLTOUCH              "Bltouch"
     #define CZ_BLTOUCH_TEST         "Test"
