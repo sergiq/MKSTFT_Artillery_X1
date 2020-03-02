@@ -62,12 +62,12 @@ const MENUITEMS manualMeshLevelingItems = {
 // title
 LABEL_LEVELING,
 // icon                        label
- {{ICON_BACKGROUND,            LABEL_BACKGROUND},
+ {{ICON_RESUME,                LABEL_RESUME},
+  {ICON_Z_INC,                 LABEL_Z_INC},
   {ICON_BACKGROUND,            LABEL_BACKGROUND},
-  {ICON_BACKGROUND,            LABEL_BACKGROUND},
-  {ICON_BACKGROUND,            LABEL_BACKGROUND},
-  {ICON_BACKGROUND,            LABEL_BACKGROUND},
-  {ICON_BACKGROUND,            LABEL_BACKGROUND},
+  {ICON_EEPROM_SAVE,           LABEL_EEPROM_SAVE},
+  {ICON_PAGE_DOWN,             LABEL_PAGE_DOWN},
+  {ICON_Z_DEC,                 LABEL_Z_DEC},
   {ICON_BACKGROUND,            LABEL_BACKGROUND},
   {ICON_BACK,                  LABEL_BACK},}
 };
@@ -81,6 +81,27 @@ void menuManualMeshLeveling(void)
     key_num = menuKeyGetValue();
     switch(key_num)
     {
+      // Start Bed leveling
+      case KEY_ICON_0:
+        storeCmd("G28\n");
+        storeCmd("G29 S1\n");
+        break;
+      // Z Up
+      case KEY_ICON_1:
+        storeCmd("G1 Z0.01\n");
+        break;
+      // Store settings
+      case KEY_ICON_3:
+        storeCmd("M500\n");
+        break;
+      // Go to next point
+      case KEY_ICON_4:
+        storeCmd("G29 S2\n");
+        break;
+      // Z Down
+      case KEY_ICON_5:
+        storeCmd("G1 Z-0.01\n");
+        break;
       case KEY_ICON_7:
         infoMenu.cur--; break;
       default:break;
