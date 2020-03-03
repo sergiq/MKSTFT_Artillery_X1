@@ -88,7 +88,9 @@ void menuManualMeshLeveling(void)
         break;
       // Z Up
       case KEY_ICON_1:
+        storeCmd("G91\n");
         storeCmd("G1 Z0.01\n");
+        storeCmd("G90\n");
         break;
       // Store settings
       case KEY_ICON_3:
@@ -100,7 +102,9 @@ void menuManualMeshLeveling(void)
         break;
       // Z Down
       case KEY_ICON_5:
+        storeCmd("G91\n");
         storeCmd("G1 Z-0.01\n");
+        storeCmd("G90\n");
         break;
       case KEY_ICON_7:
         infoMenu.cur--; break;
